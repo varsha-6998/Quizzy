@@ -4,399 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - YourApp</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Navigation Bar */
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #3a86ff;
-            text-decoration: none;
-            position: absolute;
-            left: 90px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover, .nav-links a.active {
-            color: #3a86ff;
-        }
-        
-        .btn {
-            background-color: #3a86ff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2667cc;
-        }
-        
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-        }
-        
-        /* Page Content */
-        .page-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 20px 80px;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .page-title h1 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .page-title p {
-            color: #666;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background-color: #3a86ff;
-            padding: 60px 40px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 60px;
-            color: white;
-        }
-        
-        .hero-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        
-        .hero-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-        
-        /* About Cards */
-        .about-sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .about-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .about-card h3 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #3a86ff;
-        }
-        
-        .about-card p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        /* Team Section */
-        .team-section {
-            margin-top: 80px;
-            text-align: center;
-        }
-        
-        .team-section h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-        
-        .team-section p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .team-member {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .member-image {
-            height: 250px;
-            background-color: #f0f4ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: #3a86ff;
-        }
-        
-        .member-info {
-            padding: 20px;
-        }
-        
-        .member-info h3 {
-            margin-bottom: 5px;
-            font-size: 20px;
-        }
-        
-        .member-info h4 {
-            color: #3a86ff;
-            font-size: 16px;
-            margin-bottom: 15px;
-        }
-        
-        .member-info p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        /* Values Section */
-        .values-section {
-            margin-top: 80px;
-            background-color: #f0f4ff;
-            padding: 60px 40px;
-            border-radius: 10px;
-        }
-        
-        .values-section h2 {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .value-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .value-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #3a86ff;
-        }
-        
-        .value-card h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .value-card p {
-            color: #666;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background-color: #f0f4ff;
-            padding: 60px 40px;
-            text-align: center;
-            border-radius: 10px;
-            margin-top: 80px;
-        }
-        
-        .cta-section h2 {
-            margin-bottom: 20px;
-            font-size: 28px;
-        }
-        
-        .cta-section p {
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 60px 20px 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-        
-        .footer-col h4 {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid #444;
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-buttons .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .about-sections {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/about.css')}}">
 </head>
 <body>
-    <!-- Navigation Bar -->
+     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <img src="{{url_for('static',filename='logo.png')}}" alt="app_logo" width="50" style="border-radius: 50%;">
-            <span class="logo">SkillTrace</span>
-            
-            <div class="menu-toggle" id="menuToggle">☰</div>
-            
-            <ul class="nav-links" id="navLinks">
+            <div class="logo-container">
+                <img src="{{url_for('static',filename='logo.png')}}" alt="SkillTrace Logo" width="50" style="border-radius: 50%;">
+                <span class="logo-text">SkillTrace</span>
+            </div>
 
+            <div class="menu-toggle" id="menuToggle">☰</div>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="{{url_for('index')}}" class="active">Home</a></li>
                 <li><a href="{{url_for('course')}}">Courses</a></li>
-                <li><a href="{{url_for('about')}}" class="active">About</a></li>
+                <li><a href="{{url_for('about')}}">About</a></li>
                 <li><a href="{{url_for('contact')}}">Contact</a></li>
-                <li><a href="{{url_for('signin')}}" class="btn">Sign In</a></li>
+                {% if is_logged_in %}
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+               
+                <li><a href="{{ url_for('logout') }}" class="btn">Sign Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('signin') }}" class="btn">Sign In</a></li>
+            {% endif %}
             </ul>
         </div>
     </nav>
@@ -404,14 +36,14 @@
     <!-- Page Content -->
     <div class="page-content">
         <div class="page-title">
-            <h1>About YourApp</h1>
+            <h1>About SkillTrace</h1>
             <p>Learn about our mission, our team, and why we're passionate about helping you succeed.</p>
         </div>
         
         <!-- Hero Section -->
         <div class="hero-section">
             <h2>Our Story</h2>
-            <p>Founded in 2020, YourApp was born from a simple idea: to create technology that brings people together and makes life better. What started as a small team working out of a garage has grown into a company trusted by millions of users worldwide.</p>
+            <p>Founded in 2020, SkillTrace was born from a simple idea: to create technology that brings people together and makes life better. What started as a small team working out of a garage has grown into a company trusted by millions of users worldwide.</p>
         </div>
         
         <!-- About Sections -->
@@ -426,50 +58,6 @@
                 <h3>What We Do</h3>
                 <p>We develop cutting-edge software solutions that help our users work smarter, communicate better, and achieve their goals faster. Our platform combines productivity tools, communication features, and data insights in one seamless experience.</p>
                 <p>From small startups to Fortune 500 companies, our tools scale to meet the needs of any organization.</p>
-            </div>
-        </div>
-        
-        <!-- Team Section -->
-        <div class="team-section">
-            <h2>Meet Our Leadership Team</h2>
-            <p>The passionate people behind YourApp who are dedicated to our mission and your success.</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">👩‍💼</div>
-                    <div class="member-info">
-                        <h3>Sarah Johnson</h3>
-                        <h4>CEO & Co-Founder</h4>
-                        <p>With over 15 years in tech leadership, Sarah drives our vision and strategy with a focus on user-centered design.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">👨‍💻</div>
-                    <div class="member-info">
-                        <h3>Michael Chen</h3>
-                        <h4>CTO & Co-Founder</h4>
-                        <p>Michael leads our engineering team, bringing expertise in scalable architecture and AI to create innovative solutions.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">👩‍🔬</div>
-                    <div class="member-info">
-                        <h3>Elena Rodriguez</h3>
-                        <h4>Chief Product Officer</h4>
-                        <p>Elena combines data insights with user feedback to shape our product roadmap and feature development.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">👨‍🚀</div>
-                    <div class="member-info">
-                        <h3>James Wilson</h3>
-                        <h4>Chief Marketing Officer</h4>
-                        <p>James leads our efforts to connect with users and share how YourApp can transform the way they work.</p>
-                    </div>
-                </div>
             </div>
         </div>
         
@@ -501,13 +89,6 @@
         </div>
         
     </div>
-    
-    
-    <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
-        });
-    </script>
+    <script src="{{url_for('static',filename='js/about.js')}}"></script>
 </body>
 </html>
