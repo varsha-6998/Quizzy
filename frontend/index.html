@@ -39,15 +39,19 @@
     <section class="hero">
         <div class="hero-container">
              {% if is_logged_in %}
-               <h1> Hello!, {{username}}</h1>
+               <h1> Hello! {{username}}</h1>
              {% else %}
                <h1>Transform Your Future With SkillTrace</h1>
              {% endif %}
             <p>Access thousands of high-quality courses taught by expert instructors and earn recognized certifications.
             </p>
             <div class="hero-buttons">
-                <a href="{{url_for('course')}}" class="btn">Browse Courses</a>
-                <a href="{{url_for('signin')}}" class="btn btn-secondary">Create Account</a>
+                {% if is_logged_in %}
+                    <a href="{{url_for('course')}}" class="btn">Browse Courses</a>
+                {% else %}
+                    <a href="{{url_for('course')}}" class="btn">Browse Courses</a>
+                    <a href="{{url_for('signin')}}" class="btn btn-secondary">Create Account</a>
+                {% endif %}
             </div>
         </div>
     </section>

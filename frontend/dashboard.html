@@ -69,60 +69,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="course-name">Python for Data Science</td>
-                            <td>February 12, 2025</td>
-                            <td>Dr. Sarah Chen</td>
-                            <td><span class="course-status status-active">In Progress</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Continue</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">Web Development Bootcamp</td>
-                            <td>January 24, 2025</td>
-                            <td>Michael Rodriguez</td>
-                            <td><span class="course-status status-active">In Progress</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Continue</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">SQL Database Management</td>
-                            <td>December 5, 2024</td>
-                            <td>Jennifer Park</td>
-                            <td><span class="course-status status-completed">Completed</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Certificate</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">Frontend Development Fundamentals</td>
-                            <td>November 18, 2024</td>
-                            <td>David Wilson</td>
-                            <td><span class="course-status status-completed">Completed</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Certificate</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">Machine Learning Fundamentals</td>
-                            <td>May 5, 2025</td>
-                            <td>Dr. Alicia Johnson</td>
-                            <td><span class="course-status status-active">In Progress</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Continue</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">UI/UX Design Principles</td>
-                            <td>April 18, 2025</td>
-                            <td>Thomas Greene</td>
-                            <td><span class="course-status status-active">In Progress</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Continue</a></td>
-                        </tr>
-                        <tr>
-                            <td class="course-name">Advanced JavaScript</td>
-                            <td>March 30, 2025</td>
-                            <td>Jessica Wong</td>
-                            <td><span class="course-status status-active">In Progress</span></td>
-                            <td><a href="#" style="color: #4195f5; text-decoration: none;">Continue</a></td>
-                        </tr>
-                    </tbody>
+    {% for course in registered_courses %}
+    <tr>
+        <td class="course-name">{{ course.course_name }}</td>
+        <td>{{ course.registration_date }}</td>
+        <td>{{ course.instructor }}</td>
+        <td>
+            <span class="course-status {% if course.status == 'Completed' %}status-completed{% else %}status-active{% endif %}">
+                {{ course.status }}
+            </span>
+        </td>
+        <td>
+            <a href="#" style="color: #4195f5; text-decoration: none;">
+                {% if course.status == 'Completed' %}Certificate{% else %}Continue{% endif %}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+
                 </table>
             </div>
             <div style="margin-top: 1rem; text-align: center;">
-                <button style="background-color: #4195f5; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Browse More Courses</button>
+                <a href="{{url_for('course')}}">
+                <button type="submit" style="background-color: #4195f5; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Browse More Courses</button>
+                </a>
             </div>
         </div>
     </div>

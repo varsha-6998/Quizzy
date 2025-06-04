@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Courses</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='css/course.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-container">
-                <img src="{{url_for('static',filename='logo.png')}}" alt="SkillTrace Logo" width="50"
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="SkillTrace Logo" width="50"
                     style="border-radius: 50%;">
                 <span class="logo-text">SkillTrace</span>
             </div>
@@ -21,13 +21,12 @@
             <div class="menu-toggle" id="menuToggle">☰</div>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="{{url_for('index')}}" class="active">Home</a></li>
-                <li><a href="{{url_for('course')}}">Courses</a></li>
-                <li><a href="{{url_for('about')}}">About</a></li>
-                <li><a href="{{url_for('contact')}}">Contact</a></li>
+                <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('course') }}">Courses</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
                 {% if is_logged_in %}
                 <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-
                 <li><a href="{{ url_for('logout') }}" class="btn">Sign Out</a></li>
                 {% else %}
                 <li><a href="{{ url_for('signin') }}" class="btn">Sign In</a></li>
@@ -36,36 +35,34 @@
         </div>
     </nav>
 
-
     <div class="container">
         <div class="header">
             <h1>Available Courses</h1>
-            <p>Discover our comprehensive selection of courses designed to advance your career and expand your knowledge
-            </p>
+            <p>Discover our comprehensive selection of courses designed to advance your career and expand your knowledge</p>
         </div>
 
         <div class="courses-grid">
             {% for course in courses %}
             <div class="course-card">
-                <div class="course-icon">💻</div> <!-- optionally customize icon per course -->
+                <div class="course-icon">💻</div>
                 <h3 class="course-title">{{ course.name }}</h3>
                 <p class="course-description">{{ course.description }}</p>
                 <div class="course-meta">
                     <span class="duration">{{ course.duration }}</span>
-                    
                 </div>
-                <button class="enroll-btn" onclick="enrollCourse('{{ course.id }}',event)">Enroll Now</button>
+                <button class="enroll-btn" onclick="enrollCourse('{{ course.id }}', event)">Enroll Now</button>
             </div>
             {% endfor %}
         </div>
-
     </div>
-   <script>
-  const isLoggedIn = "{{ 'true' if is_logged_in else 'false' }}";
-</script>
 
+    <!-- Pass login status to JS -->
+    <script>
+        const isLoggedIn = "{{ 'true' if is_logged_in else 'false' }}";
+    </script>
 
-    <script src="{{url_for('static',filename='js/course.js')}}"></script>
+    <!-- External JS -->
+    <script src="{{ url_for('static', filename='js/course.js') }}"></script>
 </body>
 
 </html>
