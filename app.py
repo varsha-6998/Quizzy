@@ -310,4 +310,4 @@ def delete_course(course_id):
 # -------------------------- Run App -------------------------- #
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
